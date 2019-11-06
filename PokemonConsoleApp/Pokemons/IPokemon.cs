@@ -8,6 +8,6 @@ namespace PokemonConsoleApp.Pokemons
     {
         void Go();
 
-        void ChoiceAttack();
+        void ChoiceAttack(int foe = 110);
     }
 }

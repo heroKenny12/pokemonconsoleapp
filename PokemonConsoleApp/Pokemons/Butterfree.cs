@@ -11,13 +11,13 @@ namespace PokemonConsoleApp.Pokemons
             Console.WriteLine("Vá butterfree");
         }
 
-        public void ChoiceAttack()
+        public void ChoiceAttack(int foe = 110)
         {
             Console.WriteLine("1- Gust  2- Psybeam  3- Quiver Dance 4- Sleep Powder 5- Trocar de Pokémon");
             var attack = (Console.ReadLine());
             var Gust = 40;
             var Psybeam = 65;
-            var foe = 110;
+            
 
             if ((attack == "1"))
             {
@@ -28,8 +28,8 @@ namespace PokemonConsoleApp.Pokemons
 
             if ((attack == "2"))
             {
-                Console.WriteLine("Você usou thunder wave");
-                Console.WriteLine("O seu oponente esta paralisado");
+                Console.WriteLine("Você usou Psybeam");
+                foe = foe - Psybeam;
                 Console.ReadKey();
 
             }
@@ -55,6 +55,7 @@ namespace PokemonConsoleApp.Pokemons
             {
                 Console.WriteLine("Red esta com " + (foe) + " de vida");
                 Console.ReadKey();
+                ChoiceAttack(); 
             }
 
             if ((foe <= 0))

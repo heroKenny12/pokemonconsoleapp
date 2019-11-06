@@ -16,14 +16,14 @@ namespace PokemonConsoleApp.Pokemons
             Console.WriteLine("Vá pikachu");
         }
 
-        public void ChoiceAttack()
+        public void ChoiceAttack(int foe = 110)
         {
             
             Console.WriteLine("1- Tackle  2- Thunder Wave  3- Thunder");
             var attack = (Console.ReadLine());
             var tackle = 40;
             var thunder = 110;
-            var foe = 110;
+            
 
             if ((attack == "1"))
             {
@@ -52,6 +52,7 @@ namespace PokemonConsoleApp.Pokemons
             {
                 Console.WriteLine("Red esta com " + (foe) + " de vida");
                 Console.ReadKey();
+                ChoiceAttack();
             }
 
             if ((foe <= 0))
