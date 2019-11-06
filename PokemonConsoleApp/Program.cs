@@ -1,4 +1,6 @@
-﻿using PokemonConsoleApp.Pokemons;
+﻿using PokemonConsoleApp.Foe;
+using PokemonConsoleApp.Foe.PokemonsFoe;
+using PokemonConsoleApp.Pokemons;
 using System;
 
 namespace PokemonConsoleApp
@@ -6,11 +8,15 @@ namespace PokemonConsoleApp
     class Program
     {
         static void Main(string[] args)
-        {
+        {            
             IPokemon myPokemon = ChoicePokemon();
+            IPokemonFoe foe = ChoiceFoe.ChoicePokemonFoe(myPokemon);
+
+            myPokemon.SetFoe(foe);
 
             myPokemon.Go();
-            myPokemon.ChoiceAttack();            
+            myPokemon.ChoiceAttack();
+            
 
             Console.ReadLine();
         }

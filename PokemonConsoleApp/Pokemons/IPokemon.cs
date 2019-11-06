@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokemonConsoleApp.Foe.PokemonsFoe;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,12 @@ namespace PokemonConsoleApp.Pokemons
     {
         void Go();
 
-        void ChoiceAttack(int foe = 110);
+        void ChoiceAttack();
+
+        void SetFoe(IPokemonFoe foe);
+
+        void Beated(int attack);
+
+        int GetLife();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokemonConsoleApp.Foe.PokemonsFoe;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,9 +7,23 @@ namespace PokemonConsoleApp.Pokemons
 {
     public class Pikachu : IPokemon
     {
-        public void ChoiceDefense()
-        {
+        private IPokemonFoe _foe;
+        private int _life = 110;
 
+        public void SetFoe(IPokemonFoe foe)
+        {
+            _foe = foe;
+        }       
+
+
+        public void Beated(int attack)
+        {
+            _life -= attack;
+        }
+
+        public int GetLife()
+        {
+            return _life;
         }
 
         public void Go()
@@ -16,7 +31,7 @@ namespace PokemonConsoleApp.Pokemons
             Console.WriteLine("Vá pikachu");
         }
 
-        public void ChoiceAttack(int foe = 110)
+        public void ChoiceAttack()
         {
             
             Console.WriteLine("1- Tackle  2- Thunder Wave  3- Thunder");
@@ -29,7 +44,7 @@ namespace PokemonConsoleApp.Pokemons
             {
                 Console.WriteLine("Você usou tackle");
                 Console.ReadKey();
-                foe = foe - tackle;
+                _foe.Beated(tackle);
             }
 
             if ((attack == "2"))
@@ -44,18 +59,21 @@ namespace PokemonConsoleApp.Pokemons
             {
                 Console.WriteLine("Você usou thunder");
                 Console.ReadKey();
-                foe = foe - thunder;
+                _foe.Beated(thunder);
                 Console.ReadKey();
             }
 
-            if ((foe > 0))
+            if ((_foe.GetLife() > 0))
             {
-                Console.WriteLine("Red esta com " + (foe) + " de vida");
+                Console.WriteLine("Red esta com " + (_foe.GetLife()) + " de vida");
                 Console.ReadKey();
-                ChoiceAttack();
+
+                _foe.ChoiceAttackFoe();
+
+                //ChoiceAttack(foe);
             }
 
-            if ((foe <= 0))
+            if ((_foe.GetLife() <= 0))
             {
                 Console.WriteLine("Você ganhou de Red");
                 Console.ReadKey();
